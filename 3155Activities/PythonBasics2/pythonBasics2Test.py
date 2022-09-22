@@ -26,7 +26,7 @@ def main():
 
     if check_longest_consecutive_repeating_char:
         print("---------------------------------------------------------")
-        print('longest_consecutive_repeating_charater')
+        print('longest_consecutive_repeating_character')
         test(pythonBasics2.longest_consecutive_repeating_char('aaa'), 'a')
         test(pythonBasics2.longest_consecutive_repeating_char('abba'), 'b')
         test(pythonBasics2.longest_consecutive_repeating_char('caaddda'), 'd')
