@@ -43,16 +43,18 @@ def longest_consecutive_repeating_char(s):
 # A palindrome is a string that reads the same backwards and
 # forwards. Treat capital letters the same as lowercase ones
 # and ignore spaces (i.e. case insensitive).
-# def is_palindrome(s):
+def is_palindrome(s): #s is for string
   i = 0 #set i to 0
   j = len(s)-1 #using j as a secondary i
   while i <= j: #while loop i less than or equal to j
-    if s[i] == ' ': #checks if blank space for i
-      i +=1 #increment
-      continue #continues operation
-    if s[j] == ' ': #checks if blank space for j
-      j -=1 #decrement
-
-
-
-  return
+        if s[i] == ' ': #checks if blank space for i
+            i += 1 #increment
+            continue #continues operation
+        if s[j] == ' ': #checks if blank space for j
+            j -= 1 #decrement
+            continue #continues operation
+        if s[i].lower() != s[j].lower(): #if string array i not equal to string array j 
+            return False 
+        i += 1 #increment
+        j -= 1 #decrement
+  return True
