@@ -38,7 +38,11 @@ class TestPythonBasicsOne(unittest.TestCase):
 
         self.assertEqual(pythonBasics3.multiple_words(" one-sided? "), False)
 
-        # Please add three more test cases following the order above
+        self.assertEqual(pythonBasics3.multiple_words("  testing  "), False)
+
+        self.assertEqual(pythonBasics3.multiple_words(" how many words do i use? "), True)
+
+        self.assertEqual(pythonBasics3.multiple_words(" eat-it "), False)
 
 
 #Test case for reserved_us_tld
