@@ -38,4 +38,4 @@ def multiple_words(s):
 def reserved_us_tld(s):
   # YOUR CODE HERE
   
-  return
+  return bool(re.search('^https://www\.(\w+)(\.\w+)*?\.(gov|edu|mil)$', s))
