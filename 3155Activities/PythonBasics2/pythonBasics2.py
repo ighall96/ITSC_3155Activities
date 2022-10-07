@@ -11,30 +11,59 @@
 # to n (including n).
 
 def count_threes(n):
-  return int(n/3) #divides n by a multiple of 3
+  n = list(str(n)) #conv int to list 
+  umap={} #dictionary
+  #init all multiples of three as 0 in dict
+  umap[3] = umap[6] = umap[9] = 0
+  #loop iterates over list and counts multiples of three
+  for i in n:
+    j = int(i)
+    if j%3 ==0 and j!=0:
+      umap[j] = umap[j] + 1
+
+  #find out digit with most frequency
+  maxi = -1
+  index = -1
+  for x,y in umap.items():
+    if y > maxi:
+      maxi = y
+      index = x
+
+  return index
 
 
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
 # a string s and returns the character that has the longest consecutive repeat.
 def longest_consecutive_repeating_char(s):
-  n=len(s)
+  l=len(s)
+  s=list(s)
   count=1 #set counter to 1
-  max=1 #set max to 1
-  char = s[0]
-  for i in range(0,n-1): #for i in range, 0 to n-1
-    if s[i] ==s[i+1]: #sets s array i to s arr i+1
-      count += 1 
-
+   #set max to -1
+  umap = {}
+  for i in range(0,l-1): #counts freq of chark
+    if(s[i]!= s[+1]): 
+      if((s[i] in umap)and umap[s[i]]>count): 
+        continue
+      else:
+        umap[s[i]] =  count
+        count = 1
     else:
-        if count > max: #if char greater than max then set max to count, set char to s arr i and count to 1
-          max = count
-          char = s[i] 
-          count = 1
-    if count > max: #runs in for loop instead of else, sets max to count and char to s arr
-      max = count
-      char = s[i]
-  return char
+      count = count +1
+  umap[s[s-1]]=count
+  #find max freq
+  max=-1
+
+  for z,y in umap.items():
+    if y > max:
+      max = y
+  freqList=[]
+  #add char to freqList
+  for z,y in umap.items():
+    if y==max:
+      freqList.append(y)
+   
+  return freqList
 
 
 # Part C. is_palindrome
