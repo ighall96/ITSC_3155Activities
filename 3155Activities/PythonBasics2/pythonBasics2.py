@@ -40,21 +40,13 @@ def count_threes(n):
 # a string s and returns the character that has the longest consecutive repeat.
 
 def longest_consecutive_repeating_char(s):
- #I have tried to figure this out and this is the best I have. I gave up trying to rework and accept my defeat
+ 
  s = list(s)
  l = len(s)
  count = 1
  umap = {} #declare dict
 
- for i in range(0,l-1):
-    if(s[i] != s[i+1]):
-      if((s[i] in umap) and umap[s[i]] >= count):
-        continue
-      else:
-        umap[s[i]] = count
-        count = 1
-    else: 
-      count = count +1
+
 
 
 
