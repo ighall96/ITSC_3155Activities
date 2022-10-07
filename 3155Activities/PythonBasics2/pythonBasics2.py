@@ -10,6 +10,9 @@
 # returns the number of multiples of 3 in the range from 0
 # to n (including n).
 
+from itertools import count
+
+
 def count_threes(n):
   n = list(str(n)) #conv int to list 
   umap={} #dictionary
@@ -35,35 +38,27 @@ def count_threes(n):
 # Part B. longest_consecutive_repeating_char
 # Define a function longest_consecutive_repeating_char(s) that takes
 # a string s and returns the character that has the longest consecutive repeat.
+
 def longest_consecutive_repeating_char(s):
-  l=len(s)
-  s=list(s)
-  count=1 #set counter to 1
-   #set max to -1
-  umap = {}
-  for i in range(0,l-1): #counts freq of chark
-    if(s[i]!= s[+1]): 
-      if((s[i] in umap)and umap[s[i]]>count): 
+ #I have tried to figure this out and this is the best I have. I gave up trying to rework and accept my defeat
+ s = list(s)
+ l = len(s)
+ count = 1
+ umap = {} #declare dict
+
+ for i in range(0,l-1):
+    if(s[i] != s[i+1]):
+      if((s[i] in umap) and umap[s[i]] >= count):
         continue
       else:
-        umap[s[i]] =  count
+        umap[s[i]] = count
         count = 1
-    else:
+    else: 
       count = count +1
-  umap[s[s-1]]=count
-  #find max freq
-  max=-1
 
-  for z,y in umap.items():
-    if y > max:
-      max = y
-  freqList=[]
-  #add char to freqList
-  for z,y in umap.items():
-    if y==max:
-      freqList.append(y)
-   
-  return freqList
+
+
+
 
 
 # Part C. is_palindrome
