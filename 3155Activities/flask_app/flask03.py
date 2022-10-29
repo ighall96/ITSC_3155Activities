@@ -4,6 +4,7 @@
 import os                 # os is used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
+from flask import request
 
 app = Flask(__name__)     # create an app
 
@@ -18,22 +19,29 @@ def index():
 
 @app.route('/notes')
 def get_notes():
+    a_user = {'name': 'Isaac', 'email':'ihall9@uncc.edu'}
     notes = {1: {'title': 'First Note', 'text': 'This is my first note', 'date': '10-1-2020'},
             2: {'title': 'Second Note', 'text': 'This is my second note', 'date': '10-2-2020'},
             3: {'title': 'Third Note', 'text': 'This is my third note', 'date': '10-3-2020'}}
-    return render_template('notes.html', notes=notes)
+    return render_template('notes.html', notes=notes, user=a_user)
 
 @app.route('/notes/<note_id>')
 def get_note(note_id):
+    a_user = {'name': 'Isaac', 'email':'ihall9@uncc.edu'}
     notes = {1: {'title': 'First Note', 'text': 'This is my first note', 'date': '10-1-2020'},
             2: {'title': 'Second Note', 'text': 'This is my second note', 'date': '10-2-2020'},
             3: {'title': 'Third Note', 'text': 'This is my third note', 'date': '10-3-2020'}}
-    return render_template('note.html', note=notes[int(note_id)])
+    return render_template('note.html', note=notes[int(note_id)],user=a_user)
 
-@app.route('/notes/new')
+@app.route('/notes/new', methods=['GET', 'POST'])
 def new_note():
-    a_user = {'name': 'Mogli', 'email': 'mogli@uncc.edu'}
-    return render_template('new.html', user=a_user)
+    print('request method is', request.method)
+    a_user = {'name': 'Isaac', 'email': 'ihall9@uncc.edu'}
+
+    if request.method == 'POST':
+        return '<h1> POST method used for this request</h1>'
+    else:
+        return render_template('new.html', user=a_user)
     
 
 
