@@ -64,7 +64,7 @@ def new_note():
             return redirect(url_for('get_notes'))
         else:
             
-            return render_template('new.html', user=session['user_id'])
+            return render_template('new.html', user=session['user'])
     else:
         return redirect(url_for('login'))
 
@@ -149,6 +149,14 @@ def login():
     else:
         # form did not validate or GET request
         return render_template("login.html", form=login_form)
+
+@app.route('/logout')
+def logout():
+    # check if a user is saved in session
+    if session.get('user'):
+        session.clear()
+
+    return redirect(url_for('index'))
 
 
 app.run(host=os.getenv('IP', '127.0.0.1'),port=int(os.getenv('PORT', 5000)),debug=True)
